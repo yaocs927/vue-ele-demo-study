@@ -15,6 +15,39 @@ var port = process.env.PORT || config.dev.port
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+// 对模拟数据的操作 data.json  开始 ↓
+var appData = require('../data.json'); // 获取文件
+var seller = appData.seller; // 卖家数据
+var goods = appData.goods; // 商品数据
+var ratings = appData.ratings; // 评论数据
+
+// 定义数据接口地址
+var apiRoutes = express.Router();
+apiRoutes.get('/seller', function (req, res) { // 卖家数据接口
+  res.json({
+    errno: 0,
+    data: seller
+  });
+});
+
+apiRoutes.get('/goods', function (req, res) { // 商品数据接口
+  res.json({
+    errno: 0,
+    data: goods
+  });
+});
+
+apiRoutes.get('/ratings', function (req, res) { // 评论数据接口
+  res.json({
+    errno: 0,
+    data: ratings
+  });
+});
+
+app.use('/api', apiRoutes); // 开启接口地址
+// 对模拟数据的操作 data.json  结束 ↑
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
