@@ -30,11 +30,12 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  template: '<App/>',
-  components: {
-    App
-  },
-  router: router
+  router,
+  // template: '<App/>',
+  // components: {
+  //   App
+  // },
+  render: h => h(App)
 });
 
-router.push('/goods');
+router.replace('/goods');
