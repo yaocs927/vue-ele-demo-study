@@ -1,13 +1,15 @@
 import Vue from 'vue';
 import App from './App';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 import goods from 'components/goods/goods';
 import ratings from 'components/ratings/ratings';
 import seller from 'components/seller/seller';
 
-// import 'common/sass/index.scss';
+import 'common/sass/index.scss';
 
 Vue.use(VueRouter); // 使用路由
+Vue.use(VueResource); // ajax
 
 // 定义路由
 const routes = [{
